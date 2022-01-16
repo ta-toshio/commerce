@@ -2,6 +2,7 @@ import { Fetcher } from '@commerce/utils/types'
 import { API_TOKEN, API_URL } from './const'
 import { handleFetchResponse } from './utils'
 
+// @helpful Accept-Languageの指定
 const fetcher: Fetcher = async ({
   url = API_URL,
   method = 'POST',

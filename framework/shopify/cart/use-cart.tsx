@@ -20,6 +20,9 @@ export const handler: SWRHook<GetCartHook> = {
   },
   async fetcher({ input: { cartId }, options, fetch }) {
     if (cartId) {
+      // このfetchは framework/shopify/fetcher.ts のfetch
+      // つまりこのfetcher関数はfetchをwrapするための関数
+      // checkout?.completedAt 完了だったらカートの中身を削除して、完了してなかったら...
       const { node: checkout } = await fetch({
         ...options,
         variables: {
@@ -31,6 +34,8 @@ export const handler: SWRHook<GetCartHook> = {
         Cookies.remove(SHOPIFY_CHECKOUT_URL_COOKIE)
         return null
       } else {
+        // checkoutオブジェクトを(おそらく)cart用に整形している
+        // @see framework/shopify/utils/normalize.ts
         return checkoutToCart({
           checkout,
         })

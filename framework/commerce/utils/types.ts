@@ -99,6 +99,9 @@ export type MutationSchemaBase = HookSchemaBase & {
 /**
  * Generates a SWR hook handler based on the schema of a hook
  */
+// @TODO 文法がよくわからない。関数？マップ？の型定義？
+// -> オブジェクトの型定義 useHook関数があり、fetchOptionsプロパティ、fetchプロパティのがある。
+// @see framework/shopify/cart/use-cart.tsx - 実装
 export type SWRHook<H extends SWRHookSchemaBase> = {
   useHook(
     context: SWRHookContext<H>

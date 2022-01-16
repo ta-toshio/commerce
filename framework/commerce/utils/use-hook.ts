@@ -5,6 +5,9 @@ import useData from './use-data'
 
 export function useFetcher() {
   const { providerRef, fetcherRef } = useCommerce()
+  // type Fetcher<T = any, B = any> = (options: FetcherOptions<B>) => T | Promise<T>
+  // @see framework/commerce/utils/types.ts
+  // @see framework/shopify/fetcher.ts - const fetcher: Fetcher = async ... を返却
   return providerRef.current.fetcher ?? fetcherRef.current
 }
 
@@ -12,7 +15,11 @@ export function useHook<
   P extends Provider,
   H extends MutationHook<any> | SWRHook<any>
 >(fn: (provider: P) => H) {
+  // @see framework/commerce/index.tsx
+  // CommerceContextValueのproviderRef, fetcherRef, locale, cartCookieの値を保持
+  // ここではproviderRefを使用
   const { providerRef } = useCommerce<P>()
+  // providerは@see framework/shopify/provider.ts、型はframework/commerce/index.tsx
   const provider = providerRef.current
   return fn(provider)
 }

@@ -12,15 +12,18 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   const router = useRouter()
 
   useEffect(() => {
+    // @helpful prefetchはこういうふうに使うのですね
     router.prefetch('/search')
   }, [router])
 
+  // @helpful keyUpにおけるeの型
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault()
 
     if (e.key === 'Enter') {
       const q = e.currentTarget.value
 
+      // searchページに移動して、検索の責務を任す
       router.push(
         {
           pathname: `/search`,

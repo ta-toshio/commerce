@@ -10,9 +10,12 @@ import { ManagedUIContext } from '@components/ui/context'
 const Noop: FC = ({ children }) => <>{children}</>
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  // @helpful Component.Layoutというプロパティに外からアタッチしていた。
+  // このメリットはなんだろう。
   const Layout = (Component as any).Layout || Noop
 
   useEffect(() => {
+    // @helpful domを読むこんだ後ローディングを消す処理。へー
     document.body.classList?.remove('loading')
   }, [])
 

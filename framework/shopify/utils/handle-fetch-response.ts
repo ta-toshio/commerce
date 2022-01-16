@@ -10,6 +10,7 @@ export async function getAsyncError(res: Response) {
   return getError(data.errors, res.status)
 }
 
+// @helpful res.ok以外は return new FetcherError({ errors, status })を返却
 const handleFetchResponse = async (res: Response) => {
   if (res.ok) {
     const { data, errors } = await res.json()
