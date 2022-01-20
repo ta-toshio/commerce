@@ -16,8 +16,11 @@ export default useCommerceCart as UseCart<typeof handler>
 
 export const handler: SWRHook<GetCartHook> = {
   fetchOptions: {
+    // このhandlerで実行されるgraphqlは query getCheckout($checkoutId: ID!) {
+    // 実行される場所は @see framework/commerce/utils/use-data.tsx
     query: getCheckoutQuery,
   },
+  // ベースとなるfetch処理がある。独自処理を前後に差し込むためのカスタムfetch
   async fetcher({ input: { cartId }, options, fetch }) {
     if (cartId) {
       // このfetchは framework/shopify/fetcher.ts のfetch
@@ -43,10 +46,16 @@ export const handler: SWRHook<GetCartHook> = {
     }
     return null
   },
+  // 1. framework/commerce/cart/use-cart.tsx の useCart -> useSWRHook
+  // 2. framework/commerce/utils/use-hook.ts の useSWRHook -> useHookと呼ばれる
   useHook:
     ({ useData }) =>
     (input) => {
+      // 渡されたuseDataを実行
+      // @see framework/commerce/utils/use-hook.ts
       const response = useData({
+        // revalidateOnFocus = true: ウィンドウがフォーカスされたときに自動的に再検証します （ 詳細 ）
+        // @see https://swr.vercel.app/ja/docs/options
         swrOptions: { revalidateOnFocus: false, ...input?.swrOptions },
       })
       return useMemo(
