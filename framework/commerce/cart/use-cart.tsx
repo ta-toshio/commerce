@@ -4,6 +4,16 @@ import type { SWRHook, HookFetcherFn } from '../utils/types'
 import type { GetCartHook } from '../types/cart'
 import { Provider, useCommerce } from '..'
 
+// SWRHookはuseHook, fetchOptions, fetcherを備えたオブジェクト
+// GetCartHookは
+// type GetCartHook<T extends CartTypes = CartTypes> = {
+//   data: T['cart'] | null
+//   input: {}
+//   fetcherInput: { cartId?: string }
+//   swrState: { isEmpty: boolean }
+// }
+// ReturnType<HookFunction> = ReturnType<() => T | (input?: Input) => T | (input: Input) => T>。つまりはT？
+// 型ヒントはこのようにでるH["useHook"] extends ((...args: any) => infer R) ? R : any
 export type UseCart<
   H extends SWRHook<GetCartHook<any>> = SWRHook<GetCartHook>
 > = ReturnType<H['useHook']>

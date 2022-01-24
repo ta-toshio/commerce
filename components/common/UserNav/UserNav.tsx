@@ -60,6 +60,8 @@ const UserNav: FC<Props> = ({ className }) => {
             {customer ? (
               <DropdownMenu />
             ) : (
+              <>
+              <DropdownMenu />
               <button
                 className={s.avatarButton}
                 aria-label="Menu"
@@ -67,6 +69,7 @@ const UserNav: FC<Props> = ({ className }) => {
               >
                 <Avatar />
               </button>
+              </>
             )}
           </li>
         )}

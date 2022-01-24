@@ -174,10 +174,3 @@ const useData: UseData = (options, input, fetcherFn, swrOptions) => {
   )
   return response as typeof response & { isLoading: boolean }
 ```
-
-
-
-### カートまわりまとめ
-
-framework/shopify/cart/use-cart.tsx
-framework/shopify/fetcher.ts
