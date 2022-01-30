@@ -16,8 +16,15 @@ const LoginView: FC<Props> = () => {
   const [disabled, setDisabled] = useState(false)
   const { setModalView, closeModal } = useUI()
 
+  // loginは framework/shopify/auth/use-login.tsx - useHookのuseCallback関数
+  // async function login(input) {
+  //   const data = await fetch({ input })
+  //   await revalidate()
+  //   return data
+  // },
   const login = useLogin()
 
+  // @TODO SyntheticEvent?とはなんだ
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
 

@@ -14,6 +14,8 @@ import { getAllProductsQuery } from '../../utils'
 export default function getAllProductPathsOperation({
   commerce,
 }: OperationContext<Provider>) {
+
+  // 型定義?
   async function getAllProductPaths<
     T extends GetAllProductPathsOperation
   >(opts?: {
@@ -21,6 +23,7 @@ export default function getAllProductPathsOperation({
     config?: ShopifyConfig
   }): Promise<T['data']>
 
+  // 型定義?
   async function getAllProductPaths<T extends GetAllProductPathsOperation>(
     opts: {
       variables?: T['variables']
@@ -28,6 +31,7 @@ export default function getAllProductPathsOperation({
     } & OperationOptions
   ): Promise<T['data']>
 
+  // 実体?
   async function getAllProductPaths<T extends GetAllProductPathsOperation>({
     query = getAllProductsQuery,
     config,
@@ -39,6 +43,9 @@ export default function getAllProductPathsOperation({
   } = {}): Promise<T['data']> {
     config = commerce.getConfig(config)
 
+    // @see framework/shopify/api/index.ts
+    // @see framework/shopify/api/utils/fetch-graphql-api.ts
+    // @see framework/shopify/api/utils/fetch.ts
     const { data } = await config.fetch<
       GetAllProductPathsQuery,
       GetAllProductPathsQueryVariables

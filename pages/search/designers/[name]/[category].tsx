@@ -13,4 +13,5 @@ export function getStaticPaths(): GetStaticPathsResult {
   }
 }
 
+// http://localhost:3000/search/designers/xxxxx/yyyyy
 export default Search

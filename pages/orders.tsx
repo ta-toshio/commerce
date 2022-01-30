@@ -6,14 +6,37 @@ import { Container, Text } from '@components/ui'
 
 export async function getStaticProps({
   preview,
+// undefined
   locale,
   locales,
 }: GetStaticPropsContext) {
   const config = { locale, locales }
+// { locale: 'en-US', locales: [ 'en-US', 'es' ] }
   const pagesPromise = commerce.getAllPages({ config, preview })
+
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
+// [
+//   {
+//     id: 'Z2lkOi8vc2hvcGlmeS9QYWdlLzk0MTg2OTMwNDIw',
+//     url: '/en-US/contact',
+//     name: 'Contact'
+//   },
+//   {
+//     id: 'Z2lkOi8vc2hvcGlmeS9QYWdlLzk0MTg2OTMwNDIw',
+//     url: '/es/contact',
+//     name: 'Contact'
+//   }
+// ]
   const { categories } = await siteInfoPromise
+// [
+//   {
+//     id: 'Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzM5NDE4NTE3OTM4MA==',
+//     name: 'Home page',
+//     slug: 'frontpage',
+//     path: '/frontpage'
+//   }
+// ]
 
   return {
     props: { pages, categories },

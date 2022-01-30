@@ -75,6 +75,8 @@ export const handler: SWRHook<SearchProductsHook> = {
     ({ useData }) =>
     (input = {}) => {
       return useData({
+        // HookSchemaBase.inputの例
+        // @see framework/commerce/utils/types.ts - export type HookSchemaBase
         input: [
           ['search', input.search],
           ['categoryId', input.categoryId],

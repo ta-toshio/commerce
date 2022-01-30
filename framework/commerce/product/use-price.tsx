@@ -30,6 +30,7 @@ export function formatVariantPrice({
   locale: string
 }) {
   const hasDiscount = baseAmount > amount
+  // localeによって%表示を変える？
   const formatDiscount = new Intl.NumberFormat(locale, { style: 'percent' })
   const discount = hasDiscount
     ? formatDiscount.format((baseAmount - amount) / baseAmount)
@@ -43,6 +44,7 @@ export function formatVariantPrice({
   return { price, basePrice, discount }
 }
 
+// currencyCodeとlocaleによって表示を変えるのだと思う
 export default function usePrice(
   data?: {
     amount: number

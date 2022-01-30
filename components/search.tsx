@@ -233,6 +233,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                         </a>
                       </Link>
                     </li>
+                    {/*flatMapとは？*/}
                     {brands.flatMap(({ node }: { node: any }) => (
                       <li
                         key={node.path}

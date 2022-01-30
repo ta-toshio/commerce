@@ -21,6 +21,8 @@ const login: LoginEndpoint['handlers']['login'] = async ({
   // and numeric characters.
 
   try {
+    // おそらく以下を呼んでる
+    // @see framework/bigcommerce/api/operations/login.ts
     await commerce.login({ variables: { email, password }, config, res })
   } catch (error) {
     // Check if the email and password didn't match an existing account

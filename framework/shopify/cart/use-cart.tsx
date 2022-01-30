@@ -60,6 +60,7 @@ export const handler: SWRHook<GetCartHook> = {
       })
       return useMemo(
         () =>
+          // useCart()を読んだ時以下が返ってくる（つまりはresponseオブジェクト）
           Object.create(response, {
             isEmpty: {
               get() {

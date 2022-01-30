@@ -50,6 +50,7 @@ const FeatureBar = dynamic(
   }
 )
 
+// @helpful 遅延インポート
 const Modal = dynamic(
   () => import('@components/ui/Modal'),
   {
@@ -69,6 +70,7 @@ const ModalView: FC<{ modalView: string; closeModal(): any }> = ({
   modalView,
   closeModal,
 }) => {
+  // @helpful モーダルの中身をmodalViewの識別子で出力するコンポーネントを決定。なるほど
   return (
     <Modal onClose={closeModal}>
       {modalView === 'LOGIN_VIEW' && <LoginView />}
@@ -123,6 +125,7 @@ const Layout: FC<Props> = ({
     label: c.name,
     href: `/search/${c.slug}`,
   }))
+  // console.log('pageProps', pageProps)
 
   return (
     <CommerceProvider locale={locale}>
