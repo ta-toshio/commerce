@@ -20,6 +20,8 @@ const loginEndpoint: GetAPISchema<
 
   try {
     const body = req.body ?? {}
+    // おそらく以下を呼んでる
+    // @see framework/{something}/api/endpoints/login/login.ts
     return await handlers['login']({ ...ctx, body })
   } catch (error) {
     console.error(error)

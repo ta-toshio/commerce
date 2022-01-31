@@ -34,7 +34,7 @@ type Action =
     }
 
 const initialState: State = {
-  cardFields: {} as CardFields,
+  cardFields: {} as CardFields, // @helpful アサーション使うのですね
   addressFields: {} as AddressFields,
 }
 

@@ -25,6 +25,10 @@ export const handler: MutationHook<LoginHook> = {
       })
     }
 
+    // console.log(options)
+    // {
+    //   query: 'mutaion customerAccessTokenCreate($input: Customer...)'
+    // }
     const { customerAccessTokenCreate } = await fetch<
       Mutation,
       MutationCustomerAccessTokenCreateArgs
@@ -41,6 +45,8 @@ export const handler: MutationHook<LoginHook> = {
     const accessToken = customerAccessToken?.accessToken
 
     if (accessToken) {
+      // cookieにcustomer_tokenをセット
+      // 本番アプリだとしてもcookieにセットするのだろうか
       setCustomerToken(accessToken)
     }
 
@@ -50,6 +56,7 @@ export const handler: MutationHook<LoginHook> = {
     ({ fetch }) =>
     () => {
       const { revalidate } = useCustomer()
+      // revalidateはuse-swrの中の関数
 
       return useCallback(
         async function login(input) {

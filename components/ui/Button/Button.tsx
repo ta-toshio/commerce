@@ -1,3 +1,4 @@
+// @helpful 共通ボタンコンポーネント作成例
 import cn from 'classnames'
 import React, {
   forwardRef,
@@ -48,6 +49,9 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
     className
   )
 
+  // ref={mergeRefs([ref, buttonRef])}
+  // import mergeRefs from 'react-merge-refs'
+  // なんだこの技は @TODO 調査
   return (
     <Component
       aria-pressed={active}

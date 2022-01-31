@@ -6,4 +6,5 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   return getSearchStaticProps(context)
 }
 
+// http://localhost:3000/search
 export default Search

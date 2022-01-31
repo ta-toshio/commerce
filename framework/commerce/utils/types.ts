@@ -99,10 +99,18 @@ export type MutationSchemaBase = HookSchemaBase & {
 /**
  * Generates a SWR hook handler based on the schema of a hook
  */
+// @TODO 文法がよくわからない。関数？マップ？の型定義？
+// -> オブジェクトの型定義 useHook関数があり、fetchOptionsプロパティ、fetchプロパティのがある。
+// @see framework/shopify/cart/use-cart.tsx - 実装
+//   = useCartの型（provider.cart?.useCart!)
 export type SWRHook<H extends SWRHookSchemaBase> = {
   useHook(
     context: SWRHookContext<H>
-  ): HookFunction<
+  ):
+    // () => T | (input?: Input) => T | (input: Input) => T を表す。
+    // inputはSWRHookSchemaBase.data & { swrOptions: ... }
+    // Tは2個目の型引数。
+    HookFunction<
     H['input'] & { swrOptions?: SwrOptions<H['data'], H['fetcherInput']> },
     ResponseState<H['data']> & H['swrState'] & H['mutations']
   >
@@ -110,6 +118,7 @@ export type SWRHook<H extends SWRHookSchemaBase> = {
   fetcher?: HookFetcherFn<H>
 }
 
+// useHookの引数
 export type SWRHookContext<H extends SWRHookSchemaBase> = {
   useData(context?: {
     input?: HookFetchInput | HookSWRInput

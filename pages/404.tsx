@@ -3,6 +3,7 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { Text } from '@components/ui'
 
+// 404ページでもgetStaticProps使えるのですね
 export async function getStaticProps({
   preview,
   locale,

@@ -22,6 +22,7 @@ export const getSearchVariables = ({
     categoryId,
     query,
     ...getSortVariables(sort, !!categoryId),
+    // @helpful
     ...(locale && {
       locale,
     }),

@@ -6,6 +6,7 @@ export function getRandomPairOfColors() {
   let idx = getRandomIdx()
   let idx2 = getRandomIdx()
 
+  // @interested こんなwhileの使い方か
   // Has to be a different color
   while (idx2 === idx) {
     idx2 = getRandomIdx()
@@ -197,6 +198,8 @@ export const colorMap: Record<string, string> = {
   yellowgreen: '#9ACD32',
 }
 
+// @helpful 指定した色が暗いかどうか
+// 処理内容は理解できないなぁ
 export function isDark(color: string = ''): boolean {
   color = color.toLowerCase()
   // Equation from http://24ways.org/2010/calculating-color-contrast

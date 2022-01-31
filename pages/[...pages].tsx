@@ -52,6 +52,7 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   const config = { locales }
   const { pages }: { pages: Page[] } = await commerce.getAllPages({ config })
   const [invalidPaths, log] = missingLocaleInPages()
+  //  pathsの中身 [ '/en-US/contact', '/es/contact' ]
   const paths = pages
     .map((page) => page.url)
     .filter((url) => {
@@ -69,6 +70,7 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   }
 }
 
+// http://localhost:3000/en-US/contact このようなURLで実行される
 export default function Pages({
   page,
 }: InferGetStaticPropsType<typeof getStaticProps>) {

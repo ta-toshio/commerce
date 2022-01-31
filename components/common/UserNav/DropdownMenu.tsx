@@ -45,6 +45,9 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
 
   useEffect(() => {
     if (ref.current) {
+      // ポップアップメニューが開いている場合は、画面内でスクロールさせないようにする
+      // 'body-scroll-lock'モジュールで実現可能なようだ
+      // https://github.com/willmcpo/body-scroll-lock
       if (display) {
         disableBodyScroll(ref.current)
       } else {
@@ -67,6 +70,9 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
           <Avatar />
         </button>
         {display && (
+          // body-scroll-lock
+          // disables body scroll WITHOUT disabling scroll of a target element とのこと
+          // なのでrefを設定している要素内ではスクロール可能なのでは。スクロール必要なさそうだけど。
           <ul className={s.dropdownMenu} ref={ref}>
             {LINKS.map(({ name, href }) => (
               <li key={href}>

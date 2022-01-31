@@ -15,7 +15,7 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ links }) => (
-  <NavbarRoot>
+  <NavbarRoot>{/*スクロールで少しでも移動したならcss: 'shadow-magical'を付与する*/}
     <Container>
       <div className={s.nav}>
         <div className="flex items-center flex-1">

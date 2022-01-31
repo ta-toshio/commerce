@@ -1,3 +1,4 @@
+// @helpful context, providerの実装例
 import React, { FC, useCallback, useMemo } from 'react'
 import { ThemeProvider } from 'next-themes'
 
@@ -180,6 +181,8 @@ export const UIProvider: FC = (props) => {
     [dispatch]
   )
 
+  // @helpful stateとcallbackをメモ化するんだ。へー
+  // callbackはdepsに記述する必要ないんだ
   const value = useMemo(
     () => ({
       ...state,

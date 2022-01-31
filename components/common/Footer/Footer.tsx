@@ -98,9 +98,16 @@ function usePages(pages?: Page[]) {
   if (pages) {
     pages.forEach((page) => {
       const slug = page.url && getSlug(page.url)
+      // en-US/contact
+      // es/contact
       if (!slug) return
       if (locale && !slug.startsWith(`${locale}/`)) return
       sitePages.push(page)
+// page {
+//   id: 'Z2lkOi8vc2hvcGlmeS9QYWdlLzk0MTg2OTMwNDIw',
+//   url: '/en-US/contact',
+//   name: 'Contact'
+// }
     })
   }
 

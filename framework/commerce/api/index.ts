@@ -102,6 +102,36 @@ export function getCommerceApi<P extends APIProvider>(
     defaultOperations as AllOperations<P>
   )
   const ops = customProvider.operations
+// console.log(commerce);
+// CommerceAPICore {
+//   provider: {
+//     config: {
+//       commerceUrl: 'https://xxxxx-app2-02.myshopify.com/api/2021-07/graphql.json',
+//       apiToken: 'xxxxxx',
+//       customerCookie: 'shopify_customerToken',
+//       cartCookie: 'shopify_checkoutId',
+//       cartCookieMaxAge: 2592000,
+//       fetch: [AsyncFunction: fetchGraphqlApi]
+//     },
+//     operations: Object [Module] {
+//       getAllPages: [Getter],
+//       getPage: [Getter],
+//       getAllProducts: [Getter],
+//       getAllProductPaths: [Getter],
+//       getProduct: [Getter],
+//       getSiteInfo: [Getter],
+//       login: [Getter]
+//     }
+//   },
+//   login: [Function: noop],
+//   getAllPages: [Function: noop],
+//   getPage: [Function: noop],
+//   getSiteInfo: [Function: noop],
+//   getCustomerWishlist: [Function: noop],
+//   getAllProductPaths: [Function: noop],
+//   getAllProducts: [Function: noop],
+//   getProduct: [Function: noop]
+// }
 
   OPERATIONS.forEach((k) => {
     const op = ops[k]
@@ -109,6 +139,37 @@ export function getCommerceApi<P extends APIProvider>(
       commerce[k] = op({ commerce }) as AllOperations<P>[typeof k]
     }
   })
+
+// console.log(commerce)
+// CommerceAPICore {
+//   provider: {
+//     config: {
+//       commerceUrl: 'https://xxxxx-app2-02.myshopify.com/api/2021-07/graphql.json',
+//       apiToken: 'xxxxxx',
+//       customerCookie: 'shopify_customerToken',
+//       cartCookie: 'shopify_checkoutId',
+//       cartCookieMaxAge: 2592000,
+//       fetch: [AsyncFunction: fetchGraphqlApi]
+//     },
+//     operations: Object [Module] {
+//       getAllPages: [Getter],
+//       getPage: [Getter],
+//       getAllProducts: [Getter],
+//       getAllProductPaths: [Getter],
+//       getProduct: [Getter],
+//       getSiteInfo: [Getter],
+//       login: [Getter]
+//     }
+//   },
+//   login: [AsyncFunction: login],
+//   getAllPages: [AsyncFunction: getAllPages],
+//   getPage: [AsyncFunction: getPage],
+//   getSiteInfo: [AsyncFunction: getSiteInfo],
+//   getCustomerWishlist: [Function: noop],
+//   getAllProductPaths: [AsyncFunction: getAllProductPaths],
+//   getAllProducts: [AsyncFunction: getAllProducts],
+//   getProduct: [AsyncFunction: getProduct]
+// }
 
   return commerce
 }

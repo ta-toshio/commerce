@@ -21,8 +21,50 @@ export async function getStaticProps({
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { products } = await productsPromise
+// [
+//   {
+//     id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0Lzc1MzA4NTcwMDUzMDA=',
+//     name: 'seiken',
+//     vendor: 'nikitiki.app2+02',
+//     path: '/seiken',
+//     slug: 'seiken',
+//     price: { value: 3000, currencyCode: 'JPY' },
+//     images: [ [Object] ],
+//     variants: [],
+//     options: []
+//   }
+// ]
   const { pages } = await pagesPromise
+// [
+//   {
+//     id: 'Z2lkOi8vc2hvcGlmeS9QYWdlLzk0MTg2OTMwNDIw',
+//     url: '/en-US/contact',
+//     name: 'Contact'
+//   },
+//   {
+//     id: 'Z2lkOi8vc2hvcGlmeS9QYWdlLzk0MTg2OTMwNDIw',
+//     url: '/es/contact',
+//     name: 'Contact'
+//   }
+// ]
   const { categories, brands } = await siteInfoPromise
+// categories [
+//   {
+//     id: 'Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzM5NDE4NTE3OTM4MA==',
+//     name: 'Home page',
+//     slug: 'frontpage',
+//     path: '/frontpage'
+//   }
+// ]
+// brands [
+//   {
+//     node: {
+//       entityId: 'xxxx.app2+02',
+//       name: 'xxxx.app2+02',
+//       path: 'brands/xxxx.app2+02'
+//     }
+//   }
+// ]
 
   return {
     props: {
